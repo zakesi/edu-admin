@@ -7,7 +7,9 @@ import CourseEdit from "../views/CourseEdit.vue";
 import Zhiye from "../views/Zhiye.vue";
 import ZhiyeCreate from "../views/ZhiyeCreate.vue";
 import ZhiyeEdit from "../views/ZhiyeEdit.vue";
-
+import Company from "../views/Company.vue";
+import CompanyCreate from "../views/CompanyCreate.vue";
+import CompanyEdit from "../views/CompanyEdit.vue";
 const routes = [
   {
     path: "/",
@@ -19,7 +21,7 @@ const routes = [
         path: "/dashboard",
         name: "Dashboard",
         // component: Dashboard,
-        redirect: { name: "Course" },
+        redirect: { name: "Company" },
         meta: {
           // nav: {
           //   icon: "el-icon-pie-chart",
@@ -108,6 +110,49 @@ const routes = [
             path: "/zhiye/:id/edit",
             name: "ZhiyeEdit",
             component: ZhiyeEdit,
+            meta: {
+              breadcrumb: {
+                title: "编辑"
+              }
+            }
+          }
+        ]
+      },
+      {
+        path: "/company",
+        name: "companyRoot",
+        component: { render: h => h("router-view") },
+        redirect: { name: "Company" },
+        meta: {
+          nav: {
+            icon: "el-icon-collection",
+            title: "企业管理"
+          },
+          breadcrumb: {
+            title: "企业",
+            replace: true
+          }
+        },
+        children: [
+          {
+            path: "/company",
+            name: "Company",
+            component: Company
+          },
+          {
+            path: "/company/create",
+            name: "CompanyCreate",
+            component: CompanyCreate,
+            meta: {
+              breadcrumb: {
+                title: "创建"
+              }
+            }
+          },
+          {
+            path: "/company/:id/edit",
+            name: "CompanyEdit",
+            component: CompanyEdit,
             meta: {
               breadcrumb: {
                 title: "编辑"

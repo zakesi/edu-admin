@@ -11,7 +11,6 @@ export default {
   sectionItem: id => `${PREFIX}/api/section/${id}`,
   chapterSort: `${PREFIX}/api/chapter/sort`,
   sectionSort: `${PREFIX}/api/section/sort`,
-
   zhiye: `${PREFIX}/api/zhiye`,
   zhiyeItem: id => `${PREFIX}/api/zhiye/${id}`,
   zhiyePath: `${PREFIX}/api/zhiye/path`,
@@ -19,5 +18,7 @@ export default {
   zhiyePathSort: `${PREFIX}/api/zhiye/path/sort`,
   zhiyeCourse: `${PREFIX}/api/zhiye/course`,
   zhiyeCourseItem: id => `${PREFIX}/api/zhiye/course/${id}`,
-  zhiyeCourseSort: `${PREFIX}/api/zhiye/course/sort`
+  zhiyeCourseSort: `${PREFIX}/api/zhiye/course/sort`,
+  company: `${PREFIX}/api/company`,
+  companyItem: id => `${PREFIX}/api/company/${id}`
 };
