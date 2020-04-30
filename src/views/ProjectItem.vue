@@ -22,7 +22,7 @@
                   active: versionId === version.id
                 }
               ]"
-              @click="handleVersionCheckout(version.id)"
+              @click="handleVersionCheckout(version.id, versionIndex)"
             >
               <div class="version-item-title">
                 <i class="el-icon-rank version-item-draggable"></i>
@@ -225,6 +225,7 @@ export default {
         description: ""
       },
       versionId: null,
+      versionIndex: null,
       versions: [],
       stories: [],
       drawerVisible: false,
@@ -267,8 +268,9 @@ export default {
           this.loading = false;
         });
     },
-    handleVersionCheckout(id) {
+    handleVersionCheckout(id, index) {
       this.versionId = id;
+      this.versionIndex = index;
     },
     handleVersionSort() {
       const versions = this.versions.map(data => data.id);
@@ -363,6 +365,7 @@ export default {
     handleStoryCreate() {
       const project_id = Number(this.$route.params.id);
       const version_id = this.versionId;
+      const versionIndex = this.versionIndex;
       const sort = this.stories.length + 1;
       this.$prompt("请输入故事名称", "新故事", {
         confirmButtonText: "确定",
@@ -378,9 +381,14 @@ export default {
             version_id,
             name: value
           })
-          .then(() => {
+          .then(res => {
             this.$message.success("添加故事成功");
-            this.getData();
+            this.versions[versionIndex].stories.push({
+              sort,
+              id: res.id,
+              name: value,
+              tasks: []
+            });
           })
           .finally(() => {
             this.loading = false;
