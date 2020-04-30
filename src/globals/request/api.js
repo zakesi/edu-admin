@@ -20,5 +20,16 @@ export default {
   zhiyeCourseItem: id => `${PREFIX}/api/zhiye/course/${id}`,
   zhiyeCourseSort: `${PREFIX}/api/zhiye/course/sort`,
   company: `${PREFIX}/api/company`,
-  companyItem: id => `${PREFIX}/api/company/${id}`
+  companyItem: id => `${PREFIX}/api/company/${id}`,
+  project: `${PREFIX}/api/project`,
+  projectItem: id => `${PREFIX}/api/project/${id}`,
+  projectVersion: `${PREFIX}/api/version`,
+  projectVersionItem: id => `${PREFIX}/api/version/${id}`,
+  projectStory: `${PREFIX}/api/story`,
+  projectStoryItem: id => `${PREFIX}/api/story/${id}`,
+  projectTask: `${PREFIX}/api/task`,
+  projectTaskItem: id => `${PREFIX}/api/task/${id}`,
+  projectVersionSort: `${PREFIX}/api/project/version/sort`,
+  projectStorySort: `${PREFIX}/api/project/story/sort`,
+  projectTaskSort: `${PREFIX}/api/project/task/sort`
 };

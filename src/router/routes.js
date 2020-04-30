@@ -10,6 +10,10 @@ import ZhiyeEdit from "../views/ZhiyeEdit.vue";
 import Company from "../views/Company.vue";
 import CompanyCreate from "../views/CompanyCreate.vue";
 import CompanyEdit from "../views/CompanyEdit.vue";
+import Project from "../views/Project.vue";
+import ProjectItem from "../views/ProjectItem.vue";
+import ProjectCreate from "../views/ProjectCreate.vue";
+import ProjectEdit from "../views/ProjectEdit.vue";
 const routes = [
   {
     path: "/",
@@ -153,6 +157,59 @@ const routes = [
             path: "/company/:id/edit",
             name: "CompanyEdit",
             component: CompanyEdit,
+            meta: {
+              breadcrumb: {
+                title: "编辑"
+              }
+            }
+          }
+        ]
+      },
+      {
+        path: "/project",
+        name: "ProjectRoot",
+        component: { render: h => h("router-view") },
+        redirect: { name: "Project" },
+        meta: {
+          nav: {
+            icon: "el-icon-collection",
+            title: "项目管理"
+          },
+          breadcrumb: {
+            title: "项目",
+            replace: true
+          }
+        },
+        children: [
+          {
+            path: "/project",
+            name: "Project",
+            component: Project
+          },
+          {
+            path: "/project/create",
+            name: "ProjectCreate",
+            component: ProjectCreate,
+            meta: {
+              breadcrumb: {
+                title: "创建"
+              }
+            }
+          },
+          {
+            path: "/project/:id",
+            name: "ProjectItem",
+            component: ProjectItem,
+            meta: {
+              breadcrumb: {
+                title: "详情"
+              }
+            }
+          },
+          {
+            path: "/project/:id/edit",
+            name: "ProjectEdit",
+            component: ProjectEdit,
             meta: {
               breadcrumb: {
                 title: "编辑"
