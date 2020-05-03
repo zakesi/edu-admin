@@ -15,10 +15,10 @@
           </div>
         </div>
         <el-form label-position="top" size="mini" :model="zhiye">
-          <el-form-item label="课程名称：">
+          <el-form-item label="职业名称：">
             <el-input :disabled="!isEdit" v-model="zhiye.name"></el-input>
           </el-form-item>
-          <el-form-item label="课程描述：">
+          <el-form-item label="职业描述：">
             <el-input
               type="textarea"
               :disabled="!isEdit"
@@ -27,7 +27,7 @@
           </el-form-item>
           <el-row :gutter="20">
             <el-col :lg="12">
-              <el-form-item label="课程封面：">
+              <el-form-item label="职业封面：">
                 <el-upload
                   v-if="isEdit"
                   class="el-image-upload"
@@ -57,7 +57,7 @@
               </el-form-item>
             </el-col>
             <el-col :lg="12">
-              <el-form-item label="课程状态：">
+              <el-form-item label="职业状态：">
                 <el-switch
                   :disabled="!isEdit"
                   :active-value="1"
