@@ -2,6 +2,7 @@ import BasicLayout from "@/components/BasicLayout.vue";
 // import Dashboard from "../views/Dashboard.vue";
 import Login from "../views/login.vue";
 import Course from "../views/Course.vue";
+import Dashboard from "../views/Dashboard.vue";
 import CourseCreate from "../views/CourseCreate.vue";
 import CourseEdit from "../views/CourseEdit.vue";
 import Zhiye from "../views/Zhiye.vue";
@@ -14,6 +15,13 @@ import Project from "../views/Project.vue";
 import ProjectItem from "../views/ProjectItem.vue";
 import ProjectCreate from "../views/ProjectCreate.vue";
 import ProjectEdit from "../views/ProjectEdit.vue";
+import Stack from "../views/Stack.vue";
+import StackCreate from "../views/StackCreate.vue";
+import StackEdit from "../views/StackEdit.vue";
+import SkillQuestion from "../views/SkillQuestion.vue";
+import SkillQuestionCreate from "../views/SkillQuestionCreate.vue";
+import SkillQuestionEdit from "../views/SkillQuestionEdit.vue";
+
 const routes = [
   {
     path: "/",
@@ -24,16 +32,15 @@ const routes = [
       {
         path: "/dashboard",
         name: "Dashboard",
-        // component: Dashboard,
-        redirect: { name: "Company" },
+        component: Dashboard,
         meta: {
-          // nav: {
-          //   icon: "el-icon-pie-chart",
-          //   title: "概况"
-          // },
-          // breadcrumb: {
-          //   title: "概况"
-          // }
+          nav: {
+            icon: "el-icon-pie-chart",
+            title: "概况"
+          },
+          breadcrumb: {
+            title: "概况"
+          }
         }
       },
       {
@@ -210,6 +217,92 @@ const routes = [
             path: "/project/:id/edit",
             name: "ProjectEdit",
             component: ProjectEdit,
+            meta: {
+              breadcrumb: {
+                title: "编辑"
+              }
+            }
+          }
+        ]
+      },
+      {
+        path: "/stack",
+        name: "StackRoot",
+        component: { render: h => h("router-view") },
+        redirect: { name: "Stack" },
+        meta: {
+          nav: {
+            icon: "el-icon-collection",
+            title: "技能管理"
+          },
+          breadcrumb: {
+            title: "技能",
+            replace: true
+          }
+        },
+        children: [
+          {
+            path: "/stack",
+            name: "Stack",
+            component: Stack
+          },
+          {
+            path: "/stack/create",
+            name: "StackCreate",
+            component: StackCreate,
+            meta: {
+              breadcrumb: {
+                title: "创建"
+              }
+            }
+          },
+          {
+            path: "/stack/:id/edit",
+            name: "StackEdit",
+            component: StackEdit,
+            meta: {
+              breadcrumb: {
+                title: "编辑"
+              }
+            }
+          }
+        ]
+      },
+      {
+        path: "/skill/question",
+        name: "SkillQuestionRoot",
+        component: { render: h => h("router-view") },
+        redirect: { name: "SkillQuestion" },
+        meta: {
+          nav: {
+            icon: "el-icon-collection",
+            title: "题库管理"
+          },
+          breadcrumb: {
+            title: "题库",
+            replace: true
+          }
+        },
+        children: [
+          {
+            path: "/skill/question",
+            name: "SkillQuestion",
+            component: SkillQuestion
+          },
+          {
+            path: "/skill/question/create",
+            name: "SkillQuestionCreate",
+            component: SkillQuestionCreate,
+            meta: {
+              breadcrumb: {
+                title: "创建"
+              }
+            }
+          },
+          {
+            path: "/skill/question/:id/edit",
+            name: "SkillQuestionEdit",
+            component: SkillQuestionEdit,
             meta: {
               breadcrumb: {
                 title: "编辑"

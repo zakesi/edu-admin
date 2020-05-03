@@ -31,5 +31,9 @@ export default {
   projectTaskItem: id => `${PREFIX}/api/task/${id}`,
   projectVersionSort: `${PREFIX}/api/project/version/sort`,
   projectStorySort: `${PREFIX}/api/project/story/sort`,
-  projectTaskSort: `${PREFIX}/api/project/task/sort`
+  projectTaskSort: `${PREFIX}/api/project/task/sort`,
+  stack: `${PREFIX}/api/stack`,
+  stackItem: id => `${PREFIX}/api/stack/${id}`,
+  skillQuestion: `${PREFIX}/api/skill/question`,
+  skillQuestionItem: id => `${PREFIX}/api/skill/question/${id}`
 };
