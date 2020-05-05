@@ -44,270 +44,309 @@ const routes = [
         }
       },
       {
-        path: "/course",
-        name: "CoursesRoot",
+        path: "course/manager",
+        name: "CourseManager",
         component: { render: h => h("router-view") },
-        redirect: { name: "Course" },
         meta: {
           nav: {
             icon: "el-icon-collection",
-            title: "课程管理"
-          },
-          breadcrumb: {
-            title: "课程",
-            replace: true
+            title: "职业课程"
           }
         },
         children: [
           {
             path: "/course",
-            name: "Course",
-            component: Course
-          },
-          {
-            path: "/course/create",
-            name: "CourseCreate",
-            component: CourseCreate,
+            name: "CoursesRoot",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Course" },
             meta: {
+              nav: {
+                icon: "el-icon-collection",
+                title: "课程管理"
+              },
               breadcrumb: {
-                title: "创建"
+                title: "课程",
+                replace: true
               }
-            }
-          },
-          {
-            path: "/course/:id/edit",
-            name: "CourseEdit",
-            component: CourseEdit,
-            meta: {
-              breadcrumb: {
-                title: "编辑"
+            },
+            children: [
+              {
+                path: "/course",
+                name: "Course",
+                component: Course
+              },
+              {
+                path: "/course/create",
+                name: "CourseCreate",
+                component: CourseCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/course/:id/edit",
+                name: "CourseEdit",
+                component: CourseEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
               }
-            }
-          }
-        ]
-      },
-      {
-        path: "/zhiye",
-        name: "zhiyesRoot",
-        component: { render: h => h("router-view") },
-        redirect: { name: "Zhiye" },
-        meta: {
-          nav: {
-            icon: "el-icon-collection",
-            title: "职业路径"
+            ]
           },
-          breadcrumb: {
-            title: "职业",
-            replace: true
-          }
-        },
-        children: [
           {
             path: "/zhiye",
-            name: "Zhiye",
-            component: Zhiye
-          },
-          {
-            path: "/zhiye/create",
-            name: "ZhiyeCreate",
-            component: ZhiyeCreate,
+            name: "zhiyesRoot",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Zhiye" },
             meta: {
+              nav: {
+                icon: "el-icon-collection",
+                title: "职业路径"
+              },
               breadcrumb: {
-                title: "创建"
+                title: "职业",
+                replace: true
               }
-            }
-          },
-          {
-            path: "/zhiye/:id/edit",
-            name: "ZhiyeEdit",
-            component: ZhiyeEdit,
-            meta: {
-              breadcrumb: {
-                title: "编辑"
+            },
+            children: [
+              {
+                path: "/zhiye",
+                name: "Zhiye",
+                component: Zhiye
+              },
+              {
+                path: "/zhiye/create",
+                name: "ZhiyeCreate",
+                component: ZhiyeCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/zhiye/:id/edit",
+                name: "ZhiyeEdit",
+                component: ZhiyeEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
               }
-            }
+            ]
           }
         ]
       },
       {
-        path: "/company",
-        name: "companyRoot",
+        path: "project/manager",
+        name: "ProjectManager",
         component: { render: h => h("router-view") },
-        redirect: { name: "Company" },
         meta: {
           nav: {
             icon: "el-icon-collection",
-            title: "企业管理"
-          },
-          breadcrumb: {
-            title: "企业",
-            replace: true
+            title: "企业项目"
           }
         },
         children: [
           {
             path: "/company",
-            name: "Company",
-            component: Company
-          },
-          {
-            path: "/company/create",
-            name: "CompanyCreate",
-            component: CompanyCreate,
+            name: "companyRoot",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Company" },
             meta: {
+              nav: {
+                icon: "el-icon-collection",
+                title: "企业管理"
+              },
               breadcrumb: {
-                title: "创建"
+                title: "企业",
+                replace: true
               }
-            }
-          },
-          {
-            path: "/company/:id/edit",
-            name: "CompanyEdit",
-            component: CompanyEdit,
-            meta: {
-              breadcrumb: {
-                title: "编辑"
+            },
+            children: [
+              {
+                path: "/company",
+                name: "Company",
+                component: Company
+              },
+              {
+                path: "/company/create",
+                name: "CompanyCreate",
+                component: CompanyCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/company/:id/edit",
+                name: "CompanyEdit",
+                component: CompanyEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
               }
-            }
-          }
-        ]
-      },
-      {
-        path: "/project",
-        name: "ProjectRoot",
-        component: { render: h => h("router-view") },
-        redirect: { name: "Project" },
-        meta: {
-          nav: {
-            icon: "el-icon-collection",
-            title: "项目管理"
+            ]
           },
-          breadcrumb: {
-            title: "项目",
-            replace: true
-          }
-        },
-        children: [
           {
             path: "/project",
-            name: "Project",
-            component: Project
-          },
-          {
-            path: "/project/create",
-            name: "ProjectCreate",
-            component: ProjectCreate,
+            name: "ProjectRoot",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Project" },
             meta: {
+              nav: {
+                icon: "el-icon-collection",
+                title: "项目管理"
+              },
               breadcrumb: {
-                title: "创建"
+                title: "项目",
+                replace: true
               }
-            }
-          },
-          {
-            path: "/project/:id",
-            name: "ProjectItem",
-            component: ProjectItem,
-            meta: {
-              breadcrumb: {
-                title: "详情"
+            },
+            children: [
+              {
+                path: "/project",
+                name: "Project",
+                component: Project
+              },
+              {
+                path: "/project/create",
+                name: "ProjectCreate",
+                component: ProjectCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/project/:id",
+                name: "ProjectItem",
+                component: ProjectItem,
+                meta: {
+                  breadcrumb: {
+                    title: "详情"
+                  }
+                }
+              },
+              {
+                path: "/project/:id/edit",
+                name: "ProjectEdit",
+                component: ProjectEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
               }
-            }
-          },
-          {
-            path: "/project/:id/edit",
-            name: "ProjectEdit",
-            component: ProjectEdit,
-            meta: {
-              breadcrumb: {
-                title: "编辑"
-              }
-            }
+            ]
           }
         ]
       },
       {
-        path: "/stack",
-        name: "StackRoot",
+        path: "/skill/manager",
+        name: "SkillManager",
         component: { render: h => h("router-view") },
-        redirect: { name: "Stack" },
         meta: {
           nav: {
             icon: "el-icon-collection",
-            title: "技能管理"
-          },
-          breadcrumb: {
-            title: "技能",
-            replace: true
+            title: "技能测评"
           }
         },
         children: [
           {
             path: "/stack",
-            name: "Stack",
-            component: Stack
-          },
-          {
-            path: "/stack/create",
-            name: "StackCreate",
-            component: StackCreate,
+            name: "StackRoot",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Stack" },
             meta: {
+              nav: {
+                icon: "el-icon-collection",
+                title: "技能管理"
+              },
               breadcrumb: {
-                title: "创建"
+                title: "技能",
+                replace: true
               }
-            }
-          },
-          {
-            path: "/stack/:id/edit",
-            name: "StackEdit",
-            component: StackEdit,
-            meta: {
-              breadcrumb: {
-                title: "编辑"
+            },
+            children: [
+              {
+                path: "/stack",
+                name: "Stack",
+                component: Stack
+              },
+              {
+                path: "/stack/create",
+                name: "StackCreate",
+                component: StackCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/stack/:id/edit",
+                name: "StackEdit",
+                component: StackEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
               }
-            }
-          }
-        ]
-      },
-      {
-        path: "/skill/question",
-        name: "SkillQuestionRoot",
-        component: { render: h => h("router-view") },
-        redirect: { name: "SkillQuestion" },
-        meta: {
-          nav: {
-            icon: "el-icon-collection",
-            title: "题库管理"
+            ]
           },
-          breadcrumb: {
-            title: "题库",
-            replace: true
-          }
-        },
-        children: [
           {
             path: "/skill/question",
-            name: "SkillQuestion",
-            component: SkillQuestion
-          },
-          {
-            path: "/skill/question/create",
-            name: "SkillQuestionCreate",
-            component: SkillQuestionCreate,
+            name: "SkillQuestionRoot",
+            component: { render: h => h("router-view") },
+            redirect: { name: "SkillQuestion" },
             meta: {
+              nav: {
+                icon: "el-icon-collection",
+                title: "题库管理"
+              },
               breadcrumb: {
-                title: "创建"
+                title: "题库",
+                replace: true
               }
-            }
-          },
-          {
-            path: "/skill/question/:id/edit",
-            name: "SkillQuestionEdit",
-            component: SkillQuestionEdit,
-            meta: {
-              breadcrumb: {
-                title: "编辑"
+            },
+            children: [
+              {
+                path: "/skill/question",
+                name: "SkillQuestion",
+                component: SkillQuestion
+              },
+              {
+                path: "/skill/question/create",
+                name: "SkillQuestionCreate",
+                component: SkillQuestionCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/skill/question/:id/edit",
+                name: "SkillQuestionEdit",
+                component: SkillQuestionEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
               }
-            }
+            ]
           }
         ]
       }
