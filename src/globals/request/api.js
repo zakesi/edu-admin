@@ -35,5 +35,10 @@ export default {
   stack: `${PREFIX}/api/stack`,
   stackItem: id => `${PREFIX}/api/stack/${id}`,
   skillQuestion: `${PREFIX}/api/skill/question`,
-  skillQuestionItem: id => `${PREFIX}/api/skill/question/${id}`
+  skillQuestionItem: id => `${PREFIX}/api/skill/question/${id}`,
+  manager: `${PREFIX}/api/manager`,
+  managerItem: id => `${PREFIX}/api/manager/${id}`,
+  permission: `${PREFIX}/api/permission`,
+  role: `${PREFIX}/api/role`,
+  roleItem: id => `${PREFIX}/api/role/${id}`
 };

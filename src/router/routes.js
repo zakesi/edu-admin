@@ -22,6 +22,14 @@ import SkillQuestion from "../views/SkillQuestion.vue";
 import SkillQuestionCreate from "../views/SkillQuestionCreate.vue";
 import SkillQuestionEdit from "../views/SkillQuestionEdit.vue";
 
+import SettingRoles from "../views/SettingRoles.vue";
+import SettingRoleEdit from "../views/SettingRoleEdit.vue";
+import SettingRoleCreate from "../views/SettingRoleCreate.vue";
+
+import SettingManager from "../views/SettingManager.vue";
+import SettingManagerCreate from "../views/SettingManagerCreate.vue";
+import SettingManagerEdit from "../views/SettingManagerEdit.vue";
+
 const routes = [
   {
     path: "/",
@@ -343,6 +351,103 @@ const routes = [
                 meta: {
                   breadcrumb: {
                     title: "编辑"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        path: "/setting",
+        name: "settingRoot",
+        component: { render: h => h("router-view") },
+        meta: {
+          nav: {
+            icon: "el-icon-setting",
+            title: "管理设置"
+          },
+          breadcrumb: {
+            title: "设置"
+          }
+        },
+        children: [
+          {
+            path: "/setting/manager",
+            name: "SettingManagerRoot",
+            // permission: "setting-manager",
+            component: { render: h => h("router-view") },
+            redirect: { name: "SettingManager" },
+            meta: {
+              nav: {
+                icon: "el-icon-user",
+                title: "管理员"
+              },
+              breadcrumb: {
+                title: "管理员",
+                replace: true
+              }
+            },
+            children: [
+              {
+                path: "/setting/manager",
+                name: "SettingManager",
+                component: SettingManager
+              },
+              {
+                path: "/setting/manager/create",
+                name: "SettingManagerCreate",
+                component: SettingManagerCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/setting/manager/:id/edit",
+                name: "SettingManagerEdit",
+                component: SettingManagerEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            path: "/setting/roles",
+            name: "SettingRolesRoot",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Roles" },
+            meta: {
+              nav: {
+                icon: "el-icon-user-solid",
+                title: "角色"
+              },
+              breadcrumb: {
+                title: "角色"
+              }
+            },
+            children: [
+              {
+                path: "/setting/roles",
+                name: "SettingRoles",
+                component: SettingRoles
+              },
+              {
+                path: "/setting/roles/create",
+                name: "SettingRoleCreate",
+                component: SettingRoleCreate
+              },
+              {
+                path: "/setting/roles/:id",
+                name: "SettingRoleEdit",
+                component: SettingRoleEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "详情"
                   }
                 }
               }

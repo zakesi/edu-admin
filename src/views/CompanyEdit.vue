@@ -128,28 +128,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.sub-header {
-  position: relative;
-  color: #1f2329;
-  font-size: 16px;
-  font-weight: 500;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-bottom: 24px;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: -20px;
-    border-left: 4px solid #4e83fd;
-    height: 16px;
-  }
-  .sub-header-fd {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-}
 .el-image-upload {
   position: relative;
   border: 1px dashed #d9d9d9;
