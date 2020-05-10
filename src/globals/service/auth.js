@@ -1,5 +1,6 @@
 import request from "@/globals/request/axios.js";
 import API from "@/globals/request/api.js";
+import DataStore from "@/globals/storage/index";
 
 const AuthService = {
   smsSend: function({ phone }) {
@@ -8,10 +9,16 @@ const AuthService = {
     });
   },
   smsLogin: function({ phone, code }) {
-    return request.post(API.smsLogin, {
-      phone,
-      code
-    });
+    return request
+      .post(API.smsLogin, {
+        phone,
+        code
+      })
+      .then(res => {
+        DataStore.setToken(res.token);
+        DataStore.setUserInfo(res.manager);
+        return res;
+      });
   }
 };
 

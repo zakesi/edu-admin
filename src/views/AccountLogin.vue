@@ -95,7 +95,7 @@
             <div
               class="code-box-resend"
               v-if="!countDowning"
-              @click="countDown"
+              @click="handleSendMessage"
             >
               重新获取验证码
             </div>
@@ -231,6 +231,7 @@ export default {
         })
         .then(() => {
           this.$message.success("登录成功");
+          window.location.href = "/";
         })
         .catch(() => {
           this.code = this.code.map(() => "");

@@ -25,6 +25,14 @@ class DataStore {
     this.storage.set("token", token);
   }
 
+  getUserInfo() {
+    return this.storage.get("userInfo");
+  }
+
+  setUserInfo(userInfo) {
+    this.storage.set("userInfo", userInfo);
+  }
+
   removeToken() {
     localStorage.clear();
   }

@@ -2,9 +2,9 @@
 const PREFIX_API = "http://127.0.0.1:7001/api";
 const PREFIX_API_ADMIN = PREFIX_API + "/admin";
 export default {
-  smsSend: `${PREFIX}/api/sms/send`,
-  smsLogin: `${PREFIX_API_ADMIN}/api/sms/login`,
-  qiniuToken: `${PREFIX_API}/api/qiniu/token`,
+  smsSend: `${PREFIX_API_ADMIN}/sms/send`,
+  smsLogin: `${PREFIX_API_ADMIN}/sms/login`,
+  qiniuToken: `${PREFIX_API}/qiniu/token`,
   course: `${PREFIX_API_ADMIN}/course`,
   chapter: `${PREFIX_API_ADMIN}/chapter`,
   section: `${PREFIX_API_ADMIN}/section`,

@@ -1,5 +1,6 @@
+import AccountLogin from "../views/AccountLogin.vue";
+
 import BasicLayout from "@/components/BasicLayout.vue";
-// import Dashboard from "../views/Dashboard.vue";
 import Login from "../views/login.vue";
 import Course from "../views/Course.vue";
 import Dashboard from "../views/Dashboard.vue";
@@ -31,6 +32,11 @@ import SettingManagerCreate from "../views/SettingManagerCreate.vue";
 import SettingManagerEdit from "../views/SettingManagerEdit.vue";
 
 const routes = [
+  {
+    path: "/login",
+    name: "AccountLogin",
+    component: AccountLogin
+  },
   {
     path: "/",
     name: "Root",

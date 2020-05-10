@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Message } from "element-ui";
+import DataStore from "@/globals/storage/index";
 
 const axiosInstance = axios.create();
 axiosInstance.defaults.timeout = 2000;
@@ -7,9 +8,9 @@ axiosInstance.defaults.timeout = 2000;
 axiosInstance.interceptors.request.use(
   config => {
     const newConfig = { ...config };
-    const TOKEN = "xxx";
+    const TOKEN = DataStore.getToken();
     if (TOKEN) {
-      newConfig["headers"]["Authorization"] = "Bearer " + TOKEN;
+      newConfig["headers"]["Authorization"] = `Bearer ${TOKEN}`;
     }
     return newConfig;
   },
@@ -24,6 +25,8 @@ const handleErrorRequest = error => {
     const message = data.message || "服务器发送错误，请稍后再试";
     if (status === 401) {
       Message.error("登录状态过期，请重新登录");
+      DataStore.clear();
+      window.location.href = "/";
     } else if (status === 403) {
       Message.error("没有权限，联系管理员");
     } else {

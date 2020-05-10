@@ -26,7 +26,7 @@
 
 <script>
 import Breadcrumb from "@/components/BasicBreadcrumb.vue";
-
+import DataStore from "@/globals/storage/index";
 export default {
   data() {
     return {
@@ -39,7 +39,10 @@ export default {
       const handleName = `handle${command}`;
       this[handleName]();
     },
-    handleLogout() {}
+    handleLogout() {
+      DataStore.clear();
+      window.location.href = "/";
+    }
   },
   components: {
     Breadcrumb
