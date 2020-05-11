@@ -41,7 +41,7 @@ export default {
     },
     handleLogout() {
       DataStore.clear();
-      window.location.href = "/";
+      window.location.reload();
     }
   },
   components: {

@@ -235,7 +235,7 @@ export default {
         })
         .then(() => {
           this.$message.success("登录成功");
-          window.location.href = "/";
+          window.location.reload();
         })
         .catch(() => {
           this.code = this.code.map(() => "");
