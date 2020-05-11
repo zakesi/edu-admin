@@ -1,5 +1,5 @@
-// const PREFIX_API = "https://neon.jiker.vip/api";
-const PREFIX_API = "http://127.0.0.1:7001/api";
+const PREFIX_API = "https://neon.jiker.vip/api";
+// const PREFIX_API = "http://127.0.0.1:7001/api";
 const PREFIX_API_ADMIN = PREFIX_API + "/admin";
 export default {
   smsSend: `${PREFIX_API_ADMIN}/sms/send`,
