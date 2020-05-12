@@ -19,6 +19,9 @@ const AuthService = {
         DataStore.setUserInfo(res.manager);
         return res;
       });
+  },
+  permissions: function() {
+    return request.get(API.authPermissions)
   }
 };
 

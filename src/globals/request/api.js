@@ -4,6 +4,7 @@ const PREFIX_API_ADMIN = PREFIX_API + "/admin";
 export default {
   smsSend: `${PREFIX_API_ADMIN}/sms/send`,
   smsLogin: `${PREFIX_API_ADMIN}/sms/login`,
+  authPermissions: `${PREFIX_API_ADMIN}/auth/permissions`,
   qiniuToken: `${PREFIX_API}/qiniu/token`,
   course: `${PREFIX_API_ADMIN}/course`,
   chapter: `${PREFIX_API_ADMIN}/chapter`,

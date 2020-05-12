@@ -1,7 +1,5 @@
 import AccountLogin from "../views/AccountLogin.vue";
-
 import BasicLayout from "@/components/BasicLayout.vue";
-import Login from "../views/login.vue";
 import Course from "../views/Course.vue";
 import Dashboard from "../views/Dashboard.vue";
 import CourseCreate from "../views/CourseCreate.vue";
@@ -71,6 +69,7 @@ const routes = [
           {
             path: "/course",
             name: "CoursesRoot",
+            permission: "course.index",
             component: { render: h => h("router-view") },
             redirect: { name: "Course" },
             meta: {
@@ -114,6 +113,7 @@ const routes = [
           {
             path: "/zhiye",
             name: "zhiyesRoot",
+            permission: "zhiye.index",
             component: { render: h => h("router-view") },
             redirect: { name: "Zhiye" },
             meta: {
@@ -170,6 +170,7 @@ const routes = [
           {
             path: "/company",
             name: "companyRoot",
+            permission: "company.index",
             component: { render: h => h("router-view") },
             redirect: { name: "Company" },
             meta: {
@@ -213,6 +214,7 @@ const routes = [
           {
             path: "/project",
             name: "ProjectRoot",
+            permission: "project.index",
             component: { render: h => h("router-view") },
             redirect: { name: "Project" },
             meta: {
@@ -279,6 +281,7 @@ const routes = [
           {
             path: "/stack",
             name: "StackRoot",
+            permission: "stack.index",
             component: { render: h => h("router-view") },
             redirect: { name: "Stack" },
             meta: {
@@ -322,6 +325,7 @@ const routes = [
           {
             path: "/skill/question",
             name: "SkillQuestionRoot",
+            permission: "skill.index",
             component: { render: h => h("router-view") },
             redirect: { name: "SkillQuestion" },
             meta: {
@@ -463,16 +467,6 @@ const routes = [
       }
     ]
   },
-  {
-    path: "/login",
-    name: "login",
-    component: Login,
-    meta: {
-      breadcrumb: {
-        title: "登陆页面"
-      }
-    }
-  }
 ];
 
 export default routes;

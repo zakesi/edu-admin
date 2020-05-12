@@ -38,6 +38,30 @@
 
 <script>
 import routes from "@/router/routes.js";
+import authService from "@/globals/service/auth.js";
+
+// 权限路由过滤
+const filterPermissionRoutes = (routes, permissions) => {
+  const filterRoutes = [];
+  routes.forEach(data => {
+    const route = { ...data };
+    const notPermission = !route.permission;
+    const hasPermission = permissions.includes(route.permission);
+    const passPermission = notPermission || hasPermission;
+    let hasPath = true;
+    if (route.children) {
+      route.children = filterPermissionRoutes(data.children, permissions);
+      if (route.children.length === 0) {
+        hasPath = false;
+      }
+    }
+    if (passPermission && hasPath) {
+      filterRoutes.push(route);
+    }
+  });
+  return filterRoutes;
+};
+
 export default {
   data() {
     return {
@@ -56,10 +80,14 @@ export default {
   },
   methods: {
     getPermissions() {
-      this.getRoutes();
+      authService.permissions().then( res => {
+        const permissions = res.permissions;
+        this.getRoutes(permissions);
+      })
     },
-    getRoutes() {
-      this.filterRoutes = this.filterNavigator(routes);
+    getRoutes(permissions) {
+      const permissionRoutes = filterPermissionRoutes(routes, permissions);
+      this.filterRoutes = this.filterNavigator(permissionRoutes);
     },
     filterNavigator(node) {
       let result = [];
