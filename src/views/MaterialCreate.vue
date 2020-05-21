@@ -5,15 +5,25 @@
         <div class="sub-header-title">基本信息</div>
       </div>
       <el-form label-position="top" label-width="80px" size="mini">
-        <el-form-item label="项目名称：">
-          <el-input v-model="project.name"></el-input>
+        <el-form-item label="物料名称">
+          <el-input v-model="material.name" clearable></el-input>
         </el-form-item>
-        <el-form-item label="项目介绍：">
-          <el-input type="textarea" v-model="project.description"></el-input>
+        <el-form-item label="跳转链接">
+          <el-input v-model="material.jump_url" clearable></el-input>
         </el-form-item>
-        <el-form-item label="项目封面：">
+        <el-form-item label="打开窗口" prop="target">
+          <el-select
+            v-model="material.target"
+            placeholder="请选择打开窗口"
+            clearable
+          >
+            <el-option label="原窗口" value="_self"></el-option>
+            <el-option label="新窗口" value="_blank"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="物料图片：">
           <el-upload
-            class="el-image-upload"
+            class="material-image-upload"
             ref="upload"
             action=""
             :limit="1"
@@ -22,21 +32,19 @@
             accept="image/jpg, image/jpeg, image/png"
           >
             <i
-              v-if="!project.image_url"
+              v-if="!material.upload_file"
               class="el-icon-plus el-uploader__icon"
             ></i>
             <img
-              v-if="project.image_url"
-              :src="project.image_url"
-              class="el-image-upload"
+              v-if="material.upload_file"
+              :src="material.upload_file"
+              class="material-image-upload"
             />
           </el-upload>
         </el-form-item>
-        <el-form-item>
-          <el-button size="medium" type="primary" plain @click="handleSubmit"
-            >创建</el-button
-          >
-        </el-form-item>
+        <el-button size="medium" type="primary" plain @click="handleSubmit"
+          >创建物料</el-button
+        >
       </el-form>
     </div>
   </div>
@@ -44,28 +52,32 @@
 
 <script>
 import qiniuService from "@/globals/service/qiniu.js";
-import projectService from "@/globals/service/project.js";
+import serviceMaterial from "@/globals/service/material.js";
 
 export default {
   data() {
     return {
       fileList: [],
-      project: {
+      material: {
         name: "",
-        description: "",
-        image_url: ""
+        jump_url: "",
+        target: "",
+        upload_file: ""
       }
     };
   },
   methods: {
     handleSubmit() {
       this.loading = true;
-      projectService
-        .create(this.project)
-        .then(() => {
-          this.$message.success("创建项目成功");
+      serviceMaterial
+        .create(this.material)
+        .then(res => {
+          this.$message.success("创建物料成功");
           this.$router.push({
-            name: "Project"
+            name: "Material",
+            params: {
+              id: res.id
+            }
           });
         })
         .finally(() => {
@@ -74,7 +86,7 @@ export default {
     },
     handleBeforeUpload(file) {
       qiniuService.start(file).then(res => {
-        this.project.image_url = res.imageUrl;
+        this.material.upload_file = res.imageUrl;
       });
       return Promise.reject({});
     }
@@ -105,7 +117,7 @@ export default {
     right: 0;
   }
 }
-.el-image-upload {
+.material-image-upload {
   position: relative;
   border: 1px dashed #d9d9d9;
   border-radius: 6px;

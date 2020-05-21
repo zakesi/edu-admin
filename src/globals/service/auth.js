@@ -21,7 +21,7 @@ const AuthService = {
       });
   },
   permissions: function() {
-    return request.get(API.authPermissions)
+    return request.get(API.authPermissions);
   }
 };
 

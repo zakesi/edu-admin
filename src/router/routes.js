@@ -29,6 +29,13 @@ import SettingManager from "../views/SettingManager.vue";
 import SettingManagerCreate from "../views/SettingManagerCreate.vue";
 import SettingManagerEdit from "../views/SettingManagerEdit.vue";
 
+import Advertise from "../views/Advertise.vue";
+import AdvertiseCreate from "../views/AdvertiseCreate.vue";
+import AdvertiseEdit from "../views/AdvertiseEdit.vue";
+import Material from "../views/Material.vue";
+import MaterialCreate from "../views/MaterialCreate.vue";
+import MaterialEdit from "../views/MaterialEdit.vue";
+
 const routes = [
   {
     path: "/login",
@@ -369,6 +376,107 @@ const routes = [
         ]
       },
       {
+        path: "advertise/manager",
+        name: "AdvertiseManager",
+        component: { render: h => h("router-view") },
+        meta: {
+          nav: {
+            icon: "el-icon-s-cooperation",
+            title: "广告物料"
+          }
+        },
+        children: [
+          {
+            path: "/advertise",
+            name: "AdvertiseRoot",
+            permission: "advertise.index",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Advertise" },
+            meta: {
+              nav: {
+                icon: "el-icon-s-goods",
+                title: "广告管理"
+              },
+              breadcrumb: {
+                title: "广告管理",
+                replace: true
+              }
+            },
+            children: [
+              {
+                path: "/advertise",
+                name: "Advertise",
+                component: Advertise
+              },
+              {
+                path: "/advertise/create",
+                name: "AdvertiseCreate",
+                component: AdvertiseCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/advertise/:id/edit",
+                name: "AdvertiseEdit",
+                component: AdvertiseEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            path: "/material",
+            name: "MaterialRoot",
+            permission: "material.index",
+            component: { render: h => h("router-view") },
+            redirect: { name: "Material" },
+            meta: {
+              nav: {
+                icon: "el-icon-picture",
+                title: "物料管理"
+              },
+              breadcrumb: {
+                title: "物料管理",
+                replace: true
+              }
+            },
+            children: [
+              {
+                path: "/material",
+                name: "Material",
+                component: Material
+              },
+              {
+                path: "/material/create",
+                name: "MaterialCreate",
+                component: MaterialCreate,
+                meta: {
+                  breadcrumb: {
+                    title: "创建"
+                  }
+                }
+              },
+              {
+                path: "/material/:id/edit",
+                name: "MaterialEdit",
+                component: MaterialEdit,
+                meta: {
+                  breadcrumb: {
+                    title: "编辑"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         path: "/setting",
         name: "settingRoot",
         component: { render: h => h("router-view") },
@@ -466,7 +574,7 @@ const routes = [
         ]
       }
     ]
-  },
+  }
 ];
 
 export default routes;

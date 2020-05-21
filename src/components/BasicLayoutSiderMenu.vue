@@ -80,10 +80,10 @@ export default {
   },
   methods: {
     getPermissions() {
-      authService.permissions().then( res => {
+      authService.permissions().then(res => {
         const permissions = res.permissions;
         this.getRoutes(permissions);
-      })
+      });
     },
     getRoutes(permissions) {
       const permissionRoutes = filterPermissionRoutes(routes, permissions);

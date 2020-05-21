@@ -1,5 +1,5 @@
-const PREFIX_API = "https://neon.jiker.vip/api";
-// const PREFIX_API = "http://127.0.0.1:7001/api";
+// const PREFIX_API = "https://neon.jiker.vip/api";
+const PREFIX_API = "http://127.0.0.1:7001/api";
 const PREFIX_API_ADMIN = PREFIX_API + "/admin";
 export default {
   smsSend: `${PREFIX_API_ADMIN}/sms/send`,
@@ -43,5 +43,12 @@ export default {
   managerItem: id => `${PREFIX_API_ADMIN}/manager/${id}`,
   permission: `${PREFIX_API_ADMIN}/permission`,
   role: `${PREFIX_API_ADMIN}/role`,
-  roleItem: id => `${PREFIX_API_ADMIN}/role/${id}`
+  roleItem: id => `${PREFIX_API_ADMIN}/role/${id}`,
+  advertise: `${PREFIX_API_ADMIN}/advertise`,
+  advertiseItem: id => `${PREFIX_API_ADMIN}/advertise/${id}`,
+  material: `${PREFIX_API_ADMIN}/material`,
+  materialItem: id => `${PREFIX_API_ADMIN}/material/${id}`,
+  advertiseMaterial: `${PREFIX_API_ADMIN}/advertise/material`,
+  advertiseMaterialItem: id => `${PREFIX_API_ADMIN}/advertise/material/${id}`,
+  advertiseMaterialSort: `${PREFIX_API_ADMIN}/advertise/material/sort`
 };
