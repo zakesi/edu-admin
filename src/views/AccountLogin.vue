@@ -173,7 +173,10 @@ export default {
       authService.smsSend({ phone: this.phone }).then(res => {
         const code = res.code;
         if (code) {
-          this.$message.success("验证码：" + code, 9000);
+          this.$message.success({
+            message: "验证码：" + code,
+            duration: 9000
+          });
         }
         this.showBackArrow = true;
         this.step = 2;
