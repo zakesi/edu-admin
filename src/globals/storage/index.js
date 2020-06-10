@@ -18,11 +18,11 @@ class DataStore {
   }
 
   getToken() {
-    return this.storage.get("token");
+    return this.storage.get("admin_token");
   }
 
   setToken(token) {
-    this.storage.set("token", token);
+    this.storage.set("admin_token", token);
   }
 
   getUserInfo() {

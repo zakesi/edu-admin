@@ -20,27 +20,40 @@
         <el-form-item label="技能介绍：">
           <el-input type="textarea" v-model="stack.description"></el-input>
         </el-form-item>
-        <el-form-item label="技能封面：">
-          <el-upload
-            class="el-image-upload"
-            ref="upload"
-            action=""
-            :limit="1"
-            :file-list="fileList"
-            :before-upload="handleBeforeUpload"
-            accept="image/jpg, image/jpeg, image/png"
-          >
-            <i
-              v-if="!stack.image_url"
-              class="el-icon-plus el-uploader__icon"
-            ></i>
-            <img
-              v-if="stack.image_url"
-              :src="stack.image_url"
-              class="el-image-upload"
-            />
-          </el-upload>
-        </el-form-item>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item label="技能封面：">
+              <el-upload
+                class="el-image-upload"
+                ref="upload"
+                action=""
+                :limit="1"
+                :file-list="fileList"
+                :before-upload="handleBeforeUpload"
+                accept="image/jpg, image/jpeg, image/png"
+              >
+                <i
+                  v-if="!stack.image_url"
+                  class="el-icon-plus el-uploader__icon"
+                ></i>
+                <img
+                  v-if="stack.image_url"
+                  :src="stack.image_url"
+                  class="el-image-upload"
+                />
+              </el-upload>
+            </el-form-item>
+          </el-col>
+          <el-col :lg="12">
+            <el-form-item label="课程状态：">
+              <el-switch
+                :active-value="1"
+                :inactive-value="0"
+                v-model="stack.status"
+              ></el-switch>
+            </el-form-item>
+          </el-col>
+        </el-row>
         <el-form-item>
           <el-button size="medium" type="primary" plain @click="handleSubmit"
             >保存</el-button
