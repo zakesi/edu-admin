@@ -1,8 +1,40 @@
 <template>
   <div class="page-content" v-loading="loading">
-    <router-link :to="{ name: 'StackCreate' }">
-      <el-button size="medium" type="primary" plain>创建</el-button>
-    </router-link>
+    <div class="search-container">
+      <el-form
+        label-position="right"
+        inline
+        label-width="80px"
+        :model="formData"
+        @submit.native.prevent
+      >
+        <el-form-item label="名称">
+          <el-input
+            v-model="formData.name"
+            placeholder="请填写技能栈名称"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="状态">
+          <el-select
+            v-model="formData.status"
+            size="medium"
+            placeholder="状态"
+            clearable
+          >
+            <el-option label="启用" :value="1"></el-option>
+            <el-option label="全部" :value="''"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="getData" style="margin-right: 20px;"
+            >查询</el-button
+          >
+          <router-link :to="{ name: 'StackCreate' }">
+            <el-button size="medium" type="primary" plain>创建</el-button>
+          </router-link>
+        </el-form-item>
+      </el-form>
+    </div>
     <el-table class="mt-20" :data="stacks" size="medium">
       <el-table-column prop="id" label="id" width="80px"> </el-table-column>
       <el-table-column prop="name" label="名称"> </el-table-column>
@@ -46,6 +78,10 @@ export default {
     return {
       loading: true,
       stacks: [],
+      formData: {
+        name: "",
+        status: 1
+      },
       pagination: {
         currentPage: 1,
         pageSize: 10,
@@ -59,6 +95,8 @@ export default {
   methods: {
     getData() {
       const params = {
+        name: this.formData.name,
+        status: this.formData.status,
         page_size: this.pagination.pageSize,
         current_page: this.pagination.currentPage
       };

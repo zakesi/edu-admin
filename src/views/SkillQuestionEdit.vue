@@ -70,7 +70,7 @@
           >
         </el-form-item>
         <el-form-item label="答案：">
-          <el-radio-group v-model="question.currect">
+          <el-radio-group v-model="question.correct">
             <el-radio
               :label="index"
               v-for="(opt, index) in question.option"
@@ -104,7 +104,7 @@ export default {
         stack_id: null,
         level: null,
         option: [],
-        current: ""
+        current: null
       },
       currectOption: {
         0: "A",
